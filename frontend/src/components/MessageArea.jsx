@@ -1,20 +1,33 @@
-import { useRef, useEffect } from 'react'
-import Message from './Message'
+import { useRef, useEffect } from "react";
+import Message from "./Message";
+import QuickReplies from "./QuickReplies";
 
-function MessageArea({ messages, inputMessage, setInputMessage, sendMessage, isLoading }) {
-  const messagesEndRef = useRef(null)
+function MessageArea({
+  messages,
+  inputMessage,
+  setInputMessage,
+  sendMessage, // should accept optional override: sendMessage(overrideText?)
+  isLoading,
+}) {
+  const messagesEndRef = useRef(null);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      sendMessage()
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(); // uses current inputMessage
     }
-  }
+  };
+
+  const handleQuickReply = (reply) => {
+    if (isLoading) return;
+    setInputMessage(reply); // update input UI
+    sendMessage(reply); // send with override to avoid race
+  };
 
   return (
     <>
@@ -29,7 +42,7 @@ function MessageArea({ messages, inputMessage, setInputMessage, sendMessage, isL
               timestamp={msg.timestamp}
             />
           ))}
-          
+
           {/* Loading indicator */}
           {isLoading && (
             <div className="flex justify-start mb-4">
@@ -42,10 +55,12 @@ function MessageArea({ messages, inputMessage, setInputMessage, sendMessage, isL
               </div>
             </div>
           )}
-          
+
           <div ref={messagesEndRef} />
         </div>
       </div>
+
+      <QuickReplies onQuickReply={handleQuickReply} isLoading={isLoading} />
 
       {/* Input Area */}
       <div className="bg-white border-t border-gray-200 px-4 py-4">
@@ -53,15 +68,16 @@ function MessageArea({ messages, inputMessage, setInputMessage, sendMessage, isL
           <textarea
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             placeholder="Ask me about exercise, nutrition, mental health, or wellness..."
             className="flex-1 px-4 py-3 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-sm placeholder:text-gray-500"
             rows="1"
-            style={{ minHeight: '48px', maxHeight: '120px' }}
+            style={{ minHeight: "48px", maxHeight: "120px" }}
             disabled={isLoading}
           />
           <button
-            onClick={sendMessage}
+            type="button"
+            onClick={() => sendMessage()}
             disabled={isLoading || !inputMessage.trim()}
             className="px-6 py-3 bg-yellow-400 text-gray-800 font-medium rounded-xl hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -70,7 +86,7 @@ function MessageArea({ messages, inputMessage, setInputMessage, sendMessage, isL
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default MessageArea
+export default MessageArea;
