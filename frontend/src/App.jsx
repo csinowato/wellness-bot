@@ -1,12 +1,12 @@
-import ChatBot from './components/ChatBot'
-import './index.css'
+import ChatBot from "./components/ChatBot";
+import "./index.css";
 
 function App() {
   return (
     <div className="App">
       <ChatBot />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

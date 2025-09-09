@@ -79,17 +79,15 @@ function ChatBot() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-yellow-400 text-white px-6 py-4 shadow-md">
-        <div className="flex items-center">
-          <div className="text-2xl mr-3">
-            <Sun />
-          </div>
-          <div>
+      <div className="bg-yellow-400 px-6 py-4 shadow-md">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-2">
+            <Sun className="w-6 h-6 text-yellow-600" aria-hidden />
             <h1 className="text-xl font-bold text-gray-800">FINN</h1>
-            <p className="text-sm text-gray-700">
-              Your personal health & wellness assistant
-            </p>
           </div>
+          <p className="text-sm text-gray-700">
+            Your personal health & wellness assistant
+          </p>
         </div>
       </div>
 
