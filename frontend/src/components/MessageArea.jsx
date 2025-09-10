@@ -30,7 +30,7 @@ function MessageArea({
   };
 
   return (
-    <>
+    <div className="flex flex-col h-full">
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto px-4 py-4 chat-messages">
         <div className="max-w-4xl mx-auto">
@@ -85,7 +85,7 @@ function MessageArea({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

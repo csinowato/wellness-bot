@@ -6,7 +6,7 @@ function Message({ message, isUser, timestamp }) {
       } mb-4 message-appear`}
     >
       <div
-        className={`max-w-xs lg:max-w-md px-4 py-2 rounded-xl shadow-sm ${
+        className={`max-w-lg lg:max-w-xl px-4 py-2 rounded-xl shadow-sm ${
           isUser
             ? "bg-gray-700 text-white rounded-br-none"
             : "bg-white text-gray-800 rounded-bl-none border border-gray-200"

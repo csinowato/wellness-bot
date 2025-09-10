@@ -79,7 +79,7 @@ function ChatBot() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-yellow-400 px-6 py-4 shadow-md">
+      <div className="bg-yellow-400 px-6 py-4 shadow-md flex-shrink-0">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2">
             <Sun className="w-6 h-6 text-yellow-600" aria-hidden />
@@ -91,16 +91,20 @@ function ChatBot() {
         </div>
       </div>
 
-      <DailyTip />
+      <div className="flex-shrink-0">
+        <DailyTip />
+      </div>
 
       {/* Messages + Input Area */}
-      <MessageArea
-        messages={messages}
-        inputMessage={inputMessage}
-        setInputMessage={setInputMessage}
-        sendMessage={sendMessage}
-        isLoading={isLoading}
-      />
+      <div className="flex-1 min-h-0">
+        <MessageArea
+          messages={messages}
+          inputMessage={inputMessage}
+          setInputMessage={setInputMessage}
+          sendMessage={sendMessage}
+          isLoading={isLoading}
+        />
+      </div>
     </div>
   );
 }
