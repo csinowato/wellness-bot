@@ -1,8 +1,12 @@
 # Finn - AI Wellness Bot
 
-A friendly AI-powered wellness chatbot that provides personalized advice on exercise, mental health, nutrition, sleep, and stress management.
+An AI-assisted wellness chatbot that provides contextual advice on exercise, mental health, nutrition, sleep, and stress management.
 
-<img src="./frontend/src/assets/demo.png" alt="Demo Screenshot" width="600">
+<img src="./frontend/src/assets/wellness-bot-demo.png" alt="Demo Screenshot" width="600">
+
+## 🚀 Live Demo
+
+**Try it live:** https://wellness-bot-1.onrender.com/
 
 ## ⚡ Key Features
 
@@ -19,8 +23,9 @@ A friendly AI-powered wellness chatbot that provides personalized advice on exer
 - **Backend:** Node.js, Express, JavaScript
 - **Frontend:** React, JavaScript, Vite, Tailwind CSS
 - **APIs:** Anthropic Claude API
+- **Deployment:** Render
 
-## Getting Started
+## 📋 Getting Started
 
 1. **Set up the backend**
 
@@ -55,14 +60,14 @@ A friendly AI-powered wellness chatbot that provides personalized advice on exer
 
 4. **Open your browser**
 
-   Navigate to http://localhost:5173 and start chatting!
+   Navigate to `http://localhost:5173` and start chatting!
 
-## API Routes
+## 🔧 API Routes
 
 - `GET /api/health` - Server health check
 - `POST /api/chat` - Send message, receive wellness advice
 
-## Future Enhancements
+## ✨ Future Enhancements
 
 - **Conversation Context:** Remember previous messages for better follow-ups
 - **Enhanced Quick Replies:** Expanded common questions and smart suggestions
